@@ -13,12 +13,11 @@ def solve_orienteering(instance_file):
         for line in lines[1:]:
             x, y, s = map(float, line.split())
             points.append((x, y, s))
-
+    # print(points)
     num_points = len(points)
     scores = [0] * num_points
     visited = [False] * num_points
     path = [0]  # Start with the first point
-    
     # print(points)
     #################################################################
     ## پیاده سازی بک ترکینگ ##########################################
@@ -48,7 +47,7 @@ def solve_orienteering(instance_file):
                     # print(time+distance)
         if next_point is None:
             # print('cost')
-            # print(time)
+            print(time)
             return
 
         path.append(next_point)
@@ -60,9 +59,6 @@ def solve_orienteering(instance_file):
             points[current_point][0], points[current_point][1],
             points[next_point][0], points[next_point][1]
         ), total_score)
-
-
-
 
     backtrack(0, 0, 0)
     path.append(num_points - 1)
@@ -79,7 +75,6 @@ def solve_orienteering(instance_file):
 # Usage
 instance_file = 'instance.txt'
 solution = solve_orienteering(instance_file)
-
 
 print(f"Path: {solution['path']}")
 print(f"Total Score: {solution['total_score']}")
